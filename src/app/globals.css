@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Bangers&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --font-orbitron: 'Orbitron', sans-serif;
+  --font-bangers: 'Bangers', cursive;
+  --font-inter: 'Inter', sans-serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+
+  --neon-cyan: #00f5ff;
+  --electric-purple: #bf00ff;
+  --acid-lime: #39ff14;
+  --danger-red: #ff0033;
+  --bg: #050505;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #050505;
+  color: #ffffff;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #00f5ff44;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f5ff88;
+}
+
+/* Selection */
+::selection {
+  background: #00f5ff33;
+  color: #00f5ff;
+}
+
+/* Utility classes */
+@layer utilities {
+  .neon-text {
+    color: #00f5ff;
+    text-shadow: 0 0 10px #00f5ff, 0 0 30px #00f5ff44;
+  }
+
+  .neon-border {
+    border: 1px solid #00f5ff33;
+    box-shadow: 0 0 10px #00f5ff11, inset 0 0 10px #00f5ff08;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px #00f5ff22, 0 0 60px #00f5ff11;
+  }
+
+  .purple-glow {
+    box-shadow: 0 0 20px #bf00ff22, 0 0 60px #bf00ff11;
+  }
+
+  .lime-glow {
+    box-shadow: 0 0 20px #39ff1422, 0 0 60px #39ff1411;
+  }
+
+  .font-display {
+    font-family: var(--font-orbitron);
+  }
+
+  .font-comic {
+    font-family: var(--font-bangers);
+  }
+
+  .font-mono {
+    font-family: var(--font-jetbrains);
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .halftone-bg {
+    background-image: radial-gradient(circle, rgba(0,245,255,0.08) 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+
+  .scan-lines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .comic-border {
+    border: 3px solid #00f5ff;
+    box-shadow: 4px 4px 0 #bf00ff, 0 0 20px #00f5ff22;
+  }
+
+  .comic-border-purple {
+    border: 3px solid #bf00ff;
+    box-shadow: 4px 4px 0 #00f5ff, 0 0 20px #bf00ff22;
+  }
+
+  .comic-border-lime {
+    border: 3px solid #39ff14;
+    box-shadow: 4px 4px 0 #00f5ff, 0 0 20px #39ff1422;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px #00f5ff;
+    color: transparent;
+  }
+
+  .clip-angled {
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  }
+
+  .clip-angled-sm {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.03;
+    z-index: 0;
+  }
+
+  .typing-cursor::after {
+    content: '█';
+    animation: blink 1s step-end infinite;
+    color: #00f5ff;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
