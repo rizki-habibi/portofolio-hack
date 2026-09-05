@@ -5,17 +5,7 @@ import { Menu, X, FileText } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { label: "HOME", href: "#home" },
-  { label: "ABOUT", href: "#about" },
-  { label: "SKILLS", href: "#skills" },
-  { label: "PROJECTS", href: "#projects" },
-  { label: "INNOVATIONS", href: "#innovations" },
-  { label: "CERTIFICATES", href: "#certificates" },
-  { label: "TRAINING", href: "#training" },
-  { label: "LAB", href: "#lab" },
-  { label: "CONTACT", href: "#contact" },
-];
+const navLinks = siteConfig.ui.navLinks;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -75,13 +65,13 @@ export default function Navbar() {
           </button>
 
           {/* Desktop links */}
-          <ul className="hidden lg:flex items-center gap-6">
+          <ul className="hidden lg:flex items-center gap-5">
             {navLinks.map(({ label, href }) => (
               <li key={label}>
                 <button
                   onClick={() => handleNav(href)}
                   className={cn(
-                    "font-mono text-[11px] tracking-widest uppercase transition-all duration-200 relative group",
+                    "font-mono text-[10px] tracking-widest uppercase transition-all duration-200 relative group",
                     activeSection === href.replace("#", "")
                       ? "text-[#00f5ff]"
                       : "text-gray-400 hover:text-white"
@@ -106,15 +96,15 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); handleNav("#contact"); }}
-              className="hidden md:flex items-center gap-2 font-mono text-xs tracking-widest uppercase px-4 py-2 border border-[#00f5ff] text-[#00f5ff] hover:bg-[#00f5ff] hover:text-[#050505] transition-all duration-200 clip-angled-sm"
+              className="hidden md:flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase px-4 py-2 border border-[#00f5ff] text-[#00f5ff] hover:bg-[#00f5ff] hover:text-[#050505] transition-all duration-200 clip-angled-sm"
             >
-              <FileText size={13} />
-              VIEW RESUME
+              <FileText size={12} />
+              {siteConfig.ui.viewResume}
             </a>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden text-[#00f5ff] p-1"
-              aria-label="Toggle menu"
+              aria-label="Buka menu"
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -161,7 +151,7 @@ export default function Navbar() {
                 className="flex items-center justify-center gap-2 font-mono text-xs tracking-widest uppercase px-4 py-3 border border-[#00f5ff] text-[#00f5ff] hover:bg-[#00f5ff] hover:text-[#050505] transition-all duration-200 w-full"
               >
                 <FileText size={13} />
-                VIEW RESUME
+                {siteConfig.ui.viewResume}
               </a>
             </div>
           </motion.div>

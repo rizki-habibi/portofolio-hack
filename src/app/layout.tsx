@@ -4,37 +4,37 @@ import { siteConfig } from "@/config/siteConfig";
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteConfig.name} — ${siteConfig.role}`,
-    template: `%s | ${siteConfig.name}`,
+    default: `${siteConfig.nama} — ${siteConfig.role}`,
+    template: `%s | ${siteConfig.nama}`,
   },
-  description: siteConfig.description,
+  description: siteConfig.deskripsi,
   keywords: [
     "Rizki Habibi",
     "Ethical Hacker",
     "Security Tester",
     "Penetration Testing",
     "Web Security",
-    "Cybersecurity",
+    "Keamanan Siber",
     "Bug Hunting",
     "OWASP",
-    "Portfolio",
+    "Portofolio",
   ],
-  authors: [{ name: siteConfig.name, url: siteConfig.url }],
-  creator: siteConfig.name,
+  authors: [{ name: siteConfig.nama, url: siteConfig.url }],
+  creator: siteConfig.nama,
   metadataBase: new URL(siteConfig.url),
   alternates: { canonical: siteConfig.url },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "id_ID",
     url: siteConfig.url,
-    title: `${siteConfig.name} — ${siteConfig.role}`,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
+    title: `${siteConfig.nama} — ${siteConfig.role}`,
+    description: siteConfig.deskripsi,
+    siteName: siteConfig.nama,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — ${siteConfig.role}`,
-    description: siteConfig.description,
+    title: `${siteConfig.nama} — ${siteConfig.role}`,
+    description: siteConfig.deskripsi,
     creator: "@rizki_habibi",
   },
   robots: {
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="id" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

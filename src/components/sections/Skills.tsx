@@ -1,40 +1,44 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import {
+  Shield, Globe, Zap, Search, ClipboardList, Lock, Bug,
+  Layers, Code, Code2, FileCode, Atom, Triangle, Plug, Database,
+  Crosshair, Activity, GitBranch, Terminal, Box, Send,
+} from "lucide-react";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { skills, type SkillCategory } from "@/data/skills";
 
-const categories: { label: string; value: SkillCategory | "ALL" }[] = [
-  { label: "ALL", value: "ALL" },
-  { label: "SECURITY", value: "SECURITY" },
-  { label: "DEVELOPMENT", value: "DEVELOPMENT" },
-  { label: "TOOLS", value: "TOOLS" },
+// Peta iconName -> Lucide component
+const iconMap: Record<string, React.ElementType> = {
+  shield: Shield, globe: Globe, zap: Zap, search: Search,
+  "clipboard-list": ClipboardList, lock: Lock, bug: Bug,
+  layers: Layers, code: Code, "code-2": Code2, "file-code": FileCode,
+  atom: Atom, triangle: Triangle, plug: Plug, database: Database,
+  crosshair: Crosshair, radar: Activity, activity: Activity,
+  "git-branch": GitBranch, terminal: Terminal, box: Box, send: Send,
+};
+
+const categories: { label: string; value: SkillCategory | "SEMUA" }[] = [
+  { label: "SEMUA", value: "SEMUA" },
+  { label: "KEAMANAN", value: "KEAMANAN" },
+  { label: "PENGEMBANGAN", value: "PENGEMBANGAN" },
+  { label: "ALAT", value: "ALAT" },
 ];
 
 const levelColors: Record<string, string> = {
-  Expert: "#00f5ff",
-  Advanced: "#00f5ff",
-  Intermediate: "#bf00ff",
-  Beginner: "#39ff14",
+  Ahli: "#00f5ff", Mahir: "#00f5ff", Menengah: "#bf00ff", Pemula: "#39ff14",
 };
-
 const levelWidths: Record<string, string> = {
-  Expert: "95%",
-  Advanced: "80%",
-  Intermediate: "60%",
-  Beginner: "35%",
+  Ahli: "95%", Mahir: "80%", Menengah: "60%", Pemula: "35%",
 };
-
 const categoryColors: Record<string, string> = {
-  SECURITY: "#00f5ff",
-  DEVELOPMENT: "#bf00ff",
-  TOOLS: "#39ff14",
+  KEAMANAN: "#00f5ff", PENGEMBANGAN: "#bf00ff", ALAT: "#39ff14",
 };
 
 export default function Skills() {
-  const [active, setActive] = useState<SkillCategory | "ALL">("ALL");
-
-  const filtered = active === "ALL" ? skills : skills.filter((s) => s.category === active);
+  const [active, setActive] = useState<SkillCategory | "SEMUA">("SEMUA");
+  const filtered = active === "SEMUA" ? skills : skills.filter((s) => s.kategori === active);
 
   return (
     <section id="skills" className="relative py-24 overflow-hidden">
@@ -43,40 +47,36 @@ export default function Skills() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         <SectionTitle
-          chapter="CHAPTER 02"
-          title="SKILL TREE"
-          subtitle="Technical arsenal — all levels are editable in /src/data/skills.ts"
+          chapter="BAB 02"
+          title="POHON KEAHLIAN"
+          subtitle="Arsenal teknis — semua level dapat diedit di /src/data/skills.ts"
           align="center"
           variant="cyan"
         />
 
-        {/* Category filter */}
+        {/* Filter kategori */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           {categories.map(({ label, value }) => (
             <button
               key={value}
               onClick={() => setActive(value)}
-              className={`font-mono text-xs tracking-widest uppercase px-4 py-2 border transition-all duration-200 clip-angled-sm ${
-                active === value
+              className={`font-mono text-xs tracking-widest uppercase px-4 py-2 border transition-all duration-200 clip-angled-sm ${active === value
                   ? "border-[#00f5ff] bg-[#00f5ff] text-[#050505] font-bold"
                   : "border-[#00f5ff33] text-gray-400 hover:border-[#00f5ff66] hover:text-white"
-              }`}
+                }`}
             >
               {label}
             </button>
           ))}
         </div>
 
-        {/* Skills grid */}
-        <motion.div
-          layout
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-        >
+        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((skill, i) => {
-            const color = categoryColors[skill.category];
+            const color = categoryColors[skill.kategori];
+            const IconComp = iconMap[skill.iconName] ?? Code;
             return (
               <motion.div
-                key={skill.name}
+                key={skill.nama}
                 layout
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -85,19 +85,17 @@ export default function Skills() {
                 whileHover={{ scale: 1.02 }}
                 className="bg-[#0a0a0a] border border-[#ffffff11] hover:border-[#00f5ff33] p-5 transition-all duration-200 group"
               >
-                {/* Header */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">{skill.icon}</span>
+                    <div className="w-9 h-9 border border-[#ffffff11] flex items-center justify-center group-hover:border-[#00f5ff33] transition-colors">
+                      <IconComp size={18} style={{ color }} />
+                    </div>
                     <div>
                       <div className="font-display text-sm font-bold text-white group-hover:text-[#00f5ff] transition-colors">
-                        {skill.name}
+                        {skill.nama}
                       </div>
-                      <div
-                        className="font-mono text-[10px] tracking-widest uppercase"
-                        style={{ color }}
-                      >
-                        {skill.category}
+                      <div className="font-mono text-[10px] tracking-widest uppercase" style={{ color }}>
+                        {skill.kategori}
                       </div>
                     </div>
                   </div>
@@ -109,7 +107,6 @@ export default function Skills() {
                   </span>
                 </div>
 
-                {/* Progress bar */}
                 <div className="w-full bg-[#ffffff08] h-1 rounded-none overflow-hidden">
                   <motion.div
                     className="h-full"
@@ -125,7 +122,6 @@ export default function Skills() {
           })}
         </motion.div>
 
-        {/* Note */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -133,7 +129,7 @@ export default function Skills() {
           transition={{ delay: 0.5 }}
           className="text-center font-mono text-xs text-gray-600 mt-8 tracking-wide"
         >
-          * Skill levels reflect personal assessment and are editable in{" "}
+          * Level keahlian mencerminkan penilaian pribadi dan dapat diedit di{" "}
           <code className="text-[#00f5ff33]">src/data/skills.ts</code>
         </motion.p>
       </div>

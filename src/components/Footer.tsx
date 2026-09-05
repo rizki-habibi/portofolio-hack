@@ -4,12 +4,12 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { siteConfig } from "@/config/siteConfig";
 
 const footerLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Innovations", href: "#innovations" },
-  { label: "Certificates", href: "#certificates" },
-  { label: "Contact", href: "#contact" },
+  { label: "Beranda", href: "#home" },
+  { label: "Tentang", href: "#about" },
+  { label: "Proyek", href: "#projects" },
+  { label: "Inovasi", href: "#innovations" },
+  { label: "Sertifikat", href: "#certificates" },
+  { label: "Kontak", href: "#contact" },
 ];
 
 const socials = [
@@ -26,13 +26,11 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-[#00f5ff11] bg-[#050505] pt-16 pb-8 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-20" />
-
-      {/* Top scan line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00f5ff33] to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
-          {/* Brand */}
+          {/* Merek */}
           <div className="space-y-4">
             <div className="font-display text-2xl font-black tracking-widest">
               <span className="text-[#00f5ff]">RH</span>
@@ -40,20 +38,20 @@ export default function Footer() {
               <span className="text-white">SECURITY</span>
             </div>
             <div className="font-display text-sm text-white uppercase tracking-wide">
-              {siteConfig.name}
+              {siteConfig.nama}
             </div>
             <div className="font-mono text-xs text-gray-500">{siteConfig.role}</div>
             <div className="border border-[#00f5ff22] bg-[#00f5ff08] px-3 py-2 inline-block">
               <p className="font-comic text-lg text-[#00f5ff]">
-                &ldquo;{siteConfig.tagline}&rdquo;
+                &ldquo;{siteConfig.taglineEn}&rdquo;
               </p>
             </div>
           </div>
 
-          {/* Navigation */}
+          {/* Navigasi */}
           <div>
             <div className="font-mono text-[10px] text-gray-600 tracking-[0.3em] uppercase mb-5">
-              NAVIGATION
+              NAVIGASI
             </div>
             <ul className="space-y-2">
               {footerLinks.map(({ label, href }) => (
@@ -70,10 +68,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Connect */}
+          {/* Hubungi */}
           <div>
             <div className="font-mono text-[10px] text-gray-600 tracking-[0.3em] uppercase mb-5">
-              CONNECT
+              HUBUNGI
             </div>
             <div className="space-y-3">
               {socials.map(({ icon: Icon, href, label }) => (
@@ -91,40 +89,33 @@ export default function Footer() {
               ))}
             </div>
 
-            {/* Security badge */}
             <div className="mt-6 border border-[#39ff1422] bg-[#39ff1408] px-3 py-2 inline-flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#39ff14] animate-pulse" />
               <span className="font-mono text-[9px] text-[#39ff14] tracking-widest uppercase">
-                AUTHORIZED SECURITY TESTING ONLY
+                PENGUJIAN KEAMANAN RESMI SAJA
               </span>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
         <div className="h-px bg-gradient-to-r from-transparent via-[#00f5ff22] to-transparent mb-6" />
 
-        {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-mono text-[10px] text-gray-700 tracking-wider">
-            © 2026 {siteConfig.name}. All rights reserved.
+            &copy; 2026 {siteConfig.nama}. Seluruh hak dilindungi.
           </p>
           <div className="flex items-center gap-2">
             {Array.from({ length: 20 }).map((_, i) => (
-              <div
-                key={i}
-                className="bg-[#00f5ff22]"
-                style={{ width: i % 3 === 0 ? 2 : 1, height: i % 4 === 0 ? 12 : 8 }}
-              />
+              <div key={i} className="bg-[#00f5ff22]"
+                style={{ width: i % 3 === 0 ? 2 : 1, height: i % 4 === 0 ? 12 : 8 }} />
             ))}
           </div>
           <p className="font-mono text-[10px] text-gray-700 tracking-wider">
-            BUILT WITH NEXT.JS + TAILWIND CSS
+            DIBANGUN DENGAN NEXT.JS + TAILWIND CSS
           </p>
         </div>
       </div>
 
-      {/* Bottom glow */}
       <motion.div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-px"
         style={{ background: "linear-gradient(90deg, transparent, #00f5ff44, transparent)" }}

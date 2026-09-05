@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const bootLines = [
-  { text: "INITIALIZING RH_SECURITY_LAB...", delay: 0 },
-  { text: "LOADING SYSTEM MODULES...", delay: 400 },
-  { text: "ESTABLISHING SECURE CONNECTION...", delay: 800 },
-  { text: "SCANNING PORTFOLIO DATA...", delay: 1200 },
-  { text: "VERIFYING AUTHORIZATION...", delay: 1600 },
-  { text: "ACCESS GRANTED — WELCOME", delay: 2000 },
+  { text: "MENGINISIALISASI RH_SECURITY_LAB...", delay: 0 },
+  { text: "MEMUAT MODUL SISTEM...", delay: 400 },
+  { text: "MEMBANGUN KONEKSI AMAN...", delay: 800 },
+  { text: "MEMINDAI DATA PORTOFOLIO...", delay: 1200 },
+  { text: "MEMVERIFIKASI OTORISASI...", delay: 1600 },
+  { text: "AKSES DIBERIKAN — SELAMAT DATANG", delay: 2000 },
 ];
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
@@ -21,7 +21,6 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
       setTimeout(() => setVisibleLines(i + 1), line.delay);
     });
 
-    // Progress bar
     const interval = setInterval(() => {
       setProgress((p) => {
         if (p >= 100) { clearInterval(interval); return 100; }
@@ -29,7 +28,6 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
       });
     }, 50);
 
-    // Complete after ~2.8s
     const t = setTimeout(() => {
       setDone(true);
       setTimeout(onComplete, 600);
@@ -48,17 +46,16 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           transition={{ duration: 0.6, ease: "easeInOut" }}
           className="fixed inset-0 z-[100] bg-[#050505] flex flex-col items-center justify-center overflow-hidden"
         >
-          {/* Grid bg */}
           <div className="absolute inset-0 grid-bg opacity-30" />
 
-          {/* Scan line */}
+          {/* Garis pemindai */}
           <motion.div
             className="absolute left-0 right-0 h-px bg-[#00f5ff33]"
             animate={{ top: ["0%", "100%"] }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           />
 
-          {/* Corner decorations */}
+          {/* Dekorasi sudut */}
           {["top-4 left-4", "top-4 right-4", "bottom-4 left-4", "bottom-4 right-4"].map((pos, i) => (
             <div key={i} className={`absolute ${pos} w-8 h-8 border-[#00f5ff44]`}
               style={{
@@ -84,11 +81,11 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
                 <span className="text-white">SECURITY</span>
               </div>
               <div className="font-mono text-xs text-gray-500 tracking-[0.3em] uppercase">
-                Rizki Habibi — Ethical Hacker & Security Tester
+                Rizki Habibi — Ethical Hacker &amp; Security Tester
               </div>
             </motion.div>
 
-            {/* Terminal boot lines */}
+            {/* Baris boot terminal */}
             <div className="font-mono text-xs space-y-1 mb-8 h-36 overflow-hidden">
               {bootLines.slice(0, visibleLines).map((line, i) => (
                 <motion.div
@@ -99,8 +96,8 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
                   className={i === visibleLines - 1 && i === bootLines.length - 1
                     ? "text-[#39ff14]"
                     : i === visibleLines - 1
-                    ? "text-[#00f5ff]"
-                    : "text-gray-500"
+                      ? "text-[#00f5ff]"
+                      : "text-gray-500"
                   }
                 >
                   <span className="text-[#bf00ff] mr-2">{">"}</span>
@@ -121,7 +118,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
               />
             </div>
             <div className="flex justify-between font-mono text-[10px] text-gray-600">
-              <span>LOADING PORTFOLIO</span>
+              <span>MEMUAT PORTOFOLIO</span>
               <span className="text-[#00f5ff]">{progress}%</span>
             </div>
           </div>

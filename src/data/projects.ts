@@ -1,67 +1,67 @@
-export type ProjectCategory = "Web Security" | "Cybersecurity" | "Security Research" | "Development";
-export type ProjectStatus = "COMPLETED" | "IN PROGRESS" | "PROTOTYPE";
+export type ProjectCategory = "Keamanan Web" | "Keamanan Siber" | "Riset Keamanan" | "Pengembangan";
+export type ProjectStatus = "SELESAI" | "SEDANG BERJALAN" | "PROTOTIPE";
 
 export interface Project {
   id: string;
-  title: string;
-  category: ProjectCategory;
-  description: string;
-  technologies: string[];
-  securityFocus: string;
+  judul: string;
+  kategori: ProjectCategory;
+  deskripsi: string;
+  teknologi: string[];
+  fokusKeamanan: string;
   githubUrl?: string;
   liveUrl?: string;
   caseStudyUrl?: string;
   status: ProjectStatus;
-  featured: boolean;
+  unggulan: boolean;
 }
 
 export const projects: Project[] = [
   {
     id: "p1",
-    title: "Secure Web Application Testing",
-    category: "Web Security",
-    description:
-      "Security testing methodology for identifying common application vulnerabilities including OWASP Top 10. A structured approach to web application security assessment.",
-    technologies: ["Burp Suite", "OWASP ZAP", "PHP", "MySQL"],
-    securityFocus: "OWASP Top 10 / SQL Injection / XSS / CSRF",
-    githubUrl: "https://github.com/YOUR_GITHUB",
-    status: "COMPLETED",
-    featured: true,
+    judul: "Pengujian Keamanan Aplikasi Web",
+    kategori: "Keamanan Web",
+    deskripsi:
+      "Metodologi pengujian keamanan terstruktur untuk mengidentifikasi kerentanan umum pada aplikasi web termasuk OWASP Top 10.",
+    teknologi: ["Burp Suite", "OWASP ZAP", "PHP", "MySQL"],
+    fokusKeamanan: "OWASP Top 10 / SQL Injection / XSS / CSRF",
+    githubUrl: "https://github.com/rizki-habibi",
+    status: "SELESAI",
+    unggulan: true,
   },
   {
     id: "p2",
-    title: "Security Dashboard",
-    category: "Cybersecurity",
-    description:
-      "Interactive dashboard for organizing and monitoring security testing results. Visualizes findings by severity, component, and remediation status.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Chart.js"],
-    securityFocus: "Vulnerability Tracking / Security Metrics",
-    githubUrl: "https://github.com/YOUR_GITHUB",
-    status: "IN PROGRESS",
-    featured: true,
+    judul: "Dashboard Keamanan",
+    kategori: "Keamanan Siber",
+    deskripsi:
+      "Dashboard interaktif untuk mengorganisasi dan memantau hasil pengujian keamanan. Menampilkan temuan berdasarkan tingkat keparahan, komponen, dan status remediasi.",
+    teknologi: ["Next.js", "TypeScript", "Tailwind CSS"],
+    fokusKeamanan: "Pelacakan Kerentanan / Metrik Keamanan",
+    githubUrl: "https://github.com/rizki-habibi",
+    status: "SEDANG BERJALAN",
+    unggulan: true,
   },
   {
     id: "p3",
-    title: "Web Application Security Lab",
-    category: "Security Research",
-    description:
-      "Controlled environment for studying application security and defensive techniques. Built for legal, safe practice of vulnerability analysis.",
-    technologies: ["Docker", "Linux", "PHP", "Laravel"],
-    securityFocus: "Vulnerability Research / Defensive Security",
-    githubUrl: "https://github.com/YOUR_GITHUB",
-    status: "IN PROGRESS",
-    featured: true,
+    judul: "Lab Keamanan Aplikasi Web",
+    kategori: "Riset Keamanan",
+    deskripsi:
+      "Lingkungan terkontrol untuk mempelajari keamanan aplikasi dan teknik defensif. Dibangun untuk praktik analisis kerentanan yang legal dan aman.",
+    teknologi: ["Docker", "Linux", "PHP", "Laravel"],
+    fokusKeamanan: "Riset Kerentanan / Keamanan Defensif",
+    githubUrl: "https://github.com/rizki-habibi",
+    status: "SEDANG BERJALAN",
+    unggulan: true,
   },
   {
     id: "p4",
-    title: "REST API Security Tester",
-    category: "Web Security",
-    description:
-      "Automated tool for testing REST API endpoints for common security misconfigurations, improper authentication, and input validation issues.",
-    technologies: ["Python", "Postman", "REST API"],
-    securityFocus: "API Security / Authentication Testing",
-    githubUrl: "https://github.com/YOUR_GITHUB",
-    status: "PROTOTYPE",
-    featured: false,
+    judul: "Penguji Keamanan REST API",
+    kategori: "Keamanan Web",
+    deskripsi:
+      "Alat untuk menguji endpoint REST API dari miskonfigurasi keamanan umum, autentikasi yang tidak tepat, dan masalah validasi input.",
+    teknologi: ["Python", "Postman", "REST API"],
+    fokusKeamanan: "Keamanan API / Pengujian Autentikasi",
+    githubUrl: "https://github.com/rizki-habibi",
+    status: "PROTOTIPE",
+    unggulan: false,
   },
 ];

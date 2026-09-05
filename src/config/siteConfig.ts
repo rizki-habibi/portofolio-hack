@@ -1,10 +1,11 @@
 export const siteConfig = {
-  name: "Rizki Habibi",
+  nama: "Rizki Habibi",
   role: "Ethical Hacker & Security Tester",
-  tagline: "Break It. Test It. Secure It.",
-  taglineAlt: "I Find the Bugs Before They Become Problems.",
-  description:
-    "Rizki Habibi — Ethical Hacker & Security Tester. Focused on web application security, penetration testing, vulnerability assessment, and software development.",
+  tagline: "Temukan. Uji. Amankan.",
+  taglineEn: "Break It. Test It. Secure It.",
+  taglineAlt: "Saya Menemukan Bug Sebelum Menjadi Masalah.",
+  deskripsi:
+    "Rizki Habibi — Ethical Hacker & Security Tester. Berfokus pada keamanan aplikasi web, penetration testing, vulnerability assessment, dan pengembangan perangkat lunak.",
   domain: "YOUR-DOMAIN.COM",
   url: "https://YOUR-DOMAIN.COM",
   logoText: "RH // SECURITY",
@@ -13,11 +14,27 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/in/YOUR_LINKEDIN",
     email: "your@email.com",
   },
-  stats: {
-    yearsLearning: "3+",
-    projects: "20+",
-    securityTests: "50+",
-    technologies: "15+",
+  statistik: {
+    tahunBelajar: "3+",
+    proyek: "20+",
+    pengujianKeamanan: "50+",
+    teknologi: "15+",
   },
-  bio: "Rizki Habibi is a technology enthusiast focused on ethical hacking, application security, web security testing, and software development. His approach combines offensive security thinking with practical engineering to identify weaknesses and improve system resilience.",
+  bio: "Rizki Habibi adalah seorang penggemar teknologi yang berfokus pada ethical hacking, keamanan aplikasi, pengujian keamanan web, dan pengembangan perangkat lunak. Pendekatannya menggabungkan pemikiran keamanan ofensif dengan rekayasa praktis untuk mengidentifikasi kelemahan dan meningkatkan ketahanan sistem.",
+  // Teks UI — semua dalam Bahasa Indonesia
+  ui: {
+    navLinks: [
+      { label: "BERANDA", href: "#home" },
+      { label: "TENTANG", href: "#about" },
+      { label: "KEAHLIAN", href: "#skills" },
+      { label: "PROYEK", href: "#projects" },
+      { label: "INOVASI", href: "#innovations" },
+      { label: "SERTIFIKAT", href: "#certificates" },
+      { label: "PELATIHAN", href: "#training" },
+      { label: "LAB", href: "#lab" },
+      { label: "KONTAK", href: "#contact" },
+    ],
+    viewResume: "LIHAT RESUME",
+    authorizedOnly: "PENGUJIAN KEAMANAN RESMI SAJA",
+  },
 };
