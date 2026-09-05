@@ -9,7 +9,7 @@ export const siteConfig = {
   url: "https://YOUR-DOMAIN.COM",
   logoText: "RH // SECURITY",
   social: {
-    github: "https://github.com/YOUR_GITHUB",
+    github: "https://github.com/rizki-habibi",
     linkedin: "https://linkedin.com/in/YOUR_LINKEDIN",
     email: "your@email.com",
   },
